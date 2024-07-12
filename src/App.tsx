@@ -1,11 +1,15 @@
 import React from 'react';
+import AddPizzaForm from './components/AddPizzaForm'
 import './App.css';
 
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
-      New App!
+     <div className="wrap">
+      <span className='heading'>Our pizza</span>
+      < AddPizzaForm />
+     </div>
     </div>
   );
 }
