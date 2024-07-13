@@ -1,5 +1,10 @@
 import React, { useState } from "react";
+import Pizza from "../models/Pizza";
 import './styles.css'
+
+interface AddPizzaForm {
+  addPizza: (newPizza: Pizza) => void
+}
 
 const initState = {
   title: '',
@@ -7,7 +12,7 @@ const initState = {
   image: ''
 }
 
-const AddPizzaForm: React.FC = () => {
+const AddPizzaForm: React.FC<AddPizzaForm> = ({ addPizza }) => {
 
   const [newPizza, setNewPizza] = useState<{ title: string, price: string, image: string }>(initState)
 
@@ -21,9 +26,22 @@ const AddPizzaForm: React.FC = () => {
   }
 
   console.log(newPizza)
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log(e.target)
+
+    const { title, price, image } = newPizza
+
+    if (title && price && image) {
+      addPizza(
+        {
+          title,
+          image,
+          price: Number(price),
+          id: Date.now()
+        }
+      )
+    }
   }
   return (
     <form onSubmit={handleSubmit}>
