@@ -28,8 +28,8 @@ const AddPizzaForm: React.FC<AddPizzaForm> = ({ addPizza }) => {
   console.log(newPizza)
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
 
+    e.preventDefault()
     const { title, price, image } = newPizza
 
     if (title && price && image) {
