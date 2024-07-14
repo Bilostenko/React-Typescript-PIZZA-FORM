@@ -26,6 +26,7 @@ const AddPizzaForm: React.FC<AddPizzaForm> = ({ addPizza }) => {
   }
 
   console.log(newPizza)
+ 
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 
@@ -41,6 +42,7 @@ const AddPizzaForm: React.FC<AddPizzaForm> = ({ addPizza }) => {
           id: Date.now()
         }
       )
+      setNewPizza(initState)
     }
   }
   return (
