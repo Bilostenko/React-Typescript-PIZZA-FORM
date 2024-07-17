@@ -9,12 +9,12 @@ interface DisplayPizzasProps {
 const DisplayPizzas: React.FC<DisplayPizzasProps> = ({ pizzasList }) => {
 
   return (
-    // <div className="container">
-    //   {pizzasList.map((pizza) => {
-    //     return pizza.title
-    //   })}
-    // </div>
-< SinglePizza pizzasList={pizzasList}/>
+    <div className="container">
+      {pizzasList.map((pizza) => {
+        return < SinglePizza key={pizza.id} pizza={pizza} />
+      })}
+    </div>
+
   )
 }
 
