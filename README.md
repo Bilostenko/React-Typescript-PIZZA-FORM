@@ -1,1 +1,1 @@
-  ![]([https://github.com/Bilostenko/Shopping-website/blob/master/shopping-website-ffq6.vercel.app_!.png?raw=true](https://github.com/Bilostenko/React-Typescript-Project-Public-Starter/blob/main/screen.png))
+  ![](https://github.com/Bilostenko/React-Typescript-Project-Public-Starter/blob/main/screen.png)
