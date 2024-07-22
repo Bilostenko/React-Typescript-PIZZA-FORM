@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import Pizza from "../models/Pizza";
 import './styles.css'
 
-interface EditPizzaForm {
-  data: Pizza
+interface EditPizzaFormProps {
+  data: Pizza,
+  updatePizza: (newPizza: Pizza) => void,
+  handleToggleEdit: () => void
 }
 
 
-const EditPizzaForm: React.FC<EditPizzaForm> = ({ data }) => {
+const EditPizzaForm: React.FC<EditPizzaFormProps> = ({ data, updatePizza, handleToggleEdit }) => {
 
   const [editPizza, setEditPizza] = useState<Pizza>(data)
 
@@ -26,7 +28,8 @@ const EditPizzaForm: React.FC<EditPizzaForm> = ({ data }) => {
     const { title, price, image } = editPizza
 
     if (title && price && image) {
-    console.log('edit pizza >>>', editPizza)
+      updatePizza(editPizza)
+      handleToggleEdit()
     }
   }
   return (
@@ -52,7 +55,7 @@ const EditPizzaForm: React.FC<EditPizzaForm> = ({ data }) => {
         onChange={handleChange}
         value={editPizza.image}
       />
-      <button>+ Add Pizza</button>
+      <button type="submit">Confirm</button>
     </form>
   )
 }

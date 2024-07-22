@@ -12,6 +12,13 @@ const App: React.FC = () => {
   const addPizza = (newPizza: Pizza) => {
     setPizzalist([...pizzasList, newPizza])
   }
+  const updatePizza = (newPizza: Pizza) => {
+    setPizzalist(pizzasList.map(pizza => pizza.id === newPizza.id ? newPizza : pizza))
+  }
+
+  const deletePizza = (id: number) => {
+    setPizzalist(pizzasList.filter(pizza => pizza.id !== id))
+  }
 
   console.log(pizzasList)
 
@@ -19,8 +26,9 @@ const App: React.FC = () => {
     <div className="App">
       <div className="wrap">
         <span className='heading'>Our pizza</span>
+        <span className='extra'>Paste into Image input: <br/> pizza-1.jpg, pizza-2.jpg, pizza-3.jpg, pizza-4.jpg, pizza-5.jpg, pizza-6.jpg</span>
         < AddPizzaForm addPizza={addPizza}/>
-        < DisplayPizzas pizzasList={pizzasList}/>
+        < DisplayPizzas pizzasList={pizzasList} updatePizza={updatePizza} deletePizza={deletePizza}/>
       </div>
     </div>
   );

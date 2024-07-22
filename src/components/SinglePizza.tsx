@@ -3,16 +3,21 @@ import Pizza from "../models/Pizza";
  import EditPizzaForm from "./EditPizzaForm";
 import { MdModeEditOutline, MdDelete } from "react-icons/md";
 interface SinglePizzaProps {
-  pizza: Pizza
+  pizza: Pizza,
+  updatePizza: (newPizza : Pizza) => void,
+  deletePizza: (id: number) => void
 }
 
-const SinglePizza: React.FC<SinglePizzaProps> = ({ pizza }) => {
+const SinglePizza: React.FC<SinglePizzaProps> = ({ pizza, updatePizza, deletePizza }) => {
 
-  const [edit, setEdit] = useState(false)
+  const [edit, setEdit] = useState<boolean>(false)
 
-  // useState(() => {
-  //   setEdit(true)
-  // })
+  const handleToggleEdit = () => {
+    setEdit(!edit)
+  }
+  const handleDeletePizza = () => {
+    deletePizza(pizza.id)
+  }
   return (
     <div className="pizza">
 
@@ -21,11 +26,11 @@ const SinglePizza: React.FC<SinglePizzaProps> = ({ pizza }) => {
       <span>{pizza.price} &#8372;</span>
 
       <div className="pizza-contols">
-        < MdModeEditOutline />
-        < MdDelete />
+        < MdModeEditOutline onClick={handleToggleEdit} />
+        < MdDelete onClick={handleDeletePizza}/>
       </div>
 
-      {edit ? <EditPizzaForm /> : null}
+      {edit ? <EditPizzaForm data = {pizza} updatePizza={updatePizza} handleToggleEdit={handleToggleEdit}/> : null}
 
     </div>
   )
